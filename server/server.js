@@ -1,4 +1,4 @@
-|| Om Ganganpate Namanha||
+// || Om Ganganpate Namanha||
 
 import express from "express";
 const app = express();
