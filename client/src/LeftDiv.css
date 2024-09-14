@@ -1,0 +1,42 @@
+.LeftDiv{
+    display:flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.upload_button_left
+{
+    margin-left:5px;
+    margin-right:5px;
+   width:120px;
+}
+.racat{
+    display: flex;
+    width:120px;
+    height:100px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top:-85px;
+    background-color: ghostwhite;
+    border:2px dotted black;
+}
+.line_leftside{
+    width:100%;
+    background-color:darkgray;
+    height:1px;
+}
+.group_button_left
+{
+    display: flex;
+    flex-direction: column;
+    width:100px;
+    height:140px;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.button_leftside{
+     width:120px;
+     margin:50px 5px 5px;
+}
