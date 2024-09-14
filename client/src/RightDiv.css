@@ -1,0 +1,44 @@
+.RightDiv{
+    display: flex;
+    flex-direction: column;
+}
+.innerDiv{
+    background-color: blue;
+    height: 80%;
+    width: 90%;
+    border-radius: 5%;
+    margin: 1rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.bottomBar{
+    display: flex;
+    padding: 1rem;
+    background-color: chartreuse;
+    border-radius: 2rem;
+    width: 25rem;
+}
+
+input{
+    width: 100%;
+    height: 100%;
+    margin: none;
+    font-size: medium;
+    background-color: transparent;
+    border: 0;
+}
+
+.chat{
+    background-color: chocolate;
+    padding: 1rem;
+    margin: 1%;
+}
+.bot{
+    background-color: cornflowerblue;
+}
+.sendButton{
+    /* background-color: rgba(255, 255, 255, 0); */
+    z-index: 1;
+}
