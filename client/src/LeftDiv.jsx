@@ -4,7 +4,7 @@ function LeftDiv() {
     return (
       <div className="LeftDiv">
       <div className="racat">
-      <button className="upload_button_left">upload +</button>
+      <button className="upload_button_left">Upload +</button>
       </div>
       <div className="line_leftside"></div>
         <div className="group_button_left">

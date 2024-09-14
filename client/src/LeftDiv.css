@@ -19,7 +19,9 @@
     position: relative;
     top:-85px;
     background-color: ghostwhite;
-    border:2px dotted black;
+    border:2px dotted grey;
+    margin-top:80px;
+    margin-bottom:50px;
 }
 .line_leftside{
     width:100%;
