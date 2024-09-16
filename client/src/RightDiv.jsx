@@ -1,19 +1,13 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./RightDiv.css";
-import { MyContext } from "./MyContext";
-import ReactMarkdown from 'react-markdown';
 
 function RightDiv() {
-    const {data}=useContext(MyContext);
     const [input, setInput] = useState("");
-    const [messages, setMessages] = useState([]);
-
-    useEffect(()=>{
-        if(data!=''){
-            setMessages(prevMessages=>[...prevMessages,{text:data,isBot:true}]);
-        }
-    },[data]);
-
+    const [messages, setMessages] = useState([
+        {text:"Prevention:Vaccination: Getting vaccinated is crucial. It significantly reduces the risk of severe illness, hospitalization, and death. If you havent already, consider getting vaccinated.Mask-Wearing: Especially during times of high transmission, wearing masks helps prevent the spread of the virus. Properly fitted masks protect both you and others.Physical Distancing: Maintain at least 6 feet of distance from others, especially in crowded or indoor settings.Hand Hygiene: Regularly wash your hands with soap and water for at least 20 seconds. If soap isnt available, use hand sanitizer with at least 60% alcohol.Avoid Sick Individuals: Stay away from people who are sick or showing symptoms of COVID-19.entilation: Ensure good ventilation in indoor spaces to reduce the concentration of viral particles.Stay Informed: Keep up with reliable sources for updates and guidelines.Treatment:Antiviral Medications: Several antiviral medications have received emergency use authorization for treating COVID-19. These drugs target specific parts of the virus, preventing it from multiplying in the body. Examples include remdesivir and nirmatrelvir with ritonavir (Paxlovid). Treatment should start within 57 days of symptom onset1.onoclonal Antibodies: These lab-made antibodies can help reduce the severity of illness in high-risk individuals. They are administered via infusion.upportive Care: Rest, hydration, and managing symptoms (such as fever and cough) are essential.ospitalization: Severe cases may require hospitalization, oxygen therapy, and other supportive measures.",isBot:true},
+        {text:"Hello from user", isBot:false},
+        {text:"Hello from AI", isBot:true}
+    ]);
     const msgEnd = useRef(null);
 
     function handleSend() {
@@ -39,7 +33,7 @@ function RightDiv() {
             <div className="innerDiv">
                 {messages.map((message, i) => (
                     <div key={i} className={message.isBot ? "chat bot" : "chat"}>
-                        <ReactMarkdown>{message.text}</ReactMarkdown>
+                        <p>{message.text}</p>
                     </div>
                 ))}
                 <div ref={msgEnd}></div>
