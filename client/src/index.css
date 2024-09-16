@@ -1,11 +1,19 @@
-
-
-
 body {
   margin: 0;
-  /* display: flex; */
-  place-items: center;
-  min-width: 320px;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  min-width: 320px; 
   min-height: 100vh;
+  background-color: #f0f0f0; 
+  font-family: Arial, sans-serif; 
+  color: #333; 
 }
 
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem; 
+    font-size:14px;
+}
+}

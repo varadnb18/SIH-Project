@@ -1,26 +1,37 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; 
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   display: flex;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-image: url('https://static4.depositphotos.com/1014905/360/i/450/depositphotos_3602094-stock-photo-corn-field-in-sunset-maize.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .LeftDiv, .RightDiv {
-  flex: 1; /* Each div will take 50% of the width */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.LeftDiv {
-  background-color:white; /* Optional styling for LeftDiv */
-}
-
-.RightDiv {
-  background-color: #563a8e; /* Optional styling for RightDiv */
-}
-
-.Divider {
-  width: 2px; /* Vertical line width */
-  background-color: black; /* Color of the vertical line */
-  height: 100vh; /* Full viewport height */
+  padding: 1rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

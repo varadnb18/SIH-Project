@@ -3,36 +3,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('https://i.pinimg.com/564x/bd/4d/ef/bd4defbde9596c7d6d7ad3e6264104f1.jpg');
+    /* background-image: url('https://static4.depositphotos.com/1014905/360/i/450/depositphotos_3602094-stock-photo-corn-field-in-sunset-maize.jpg'); */
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat; 
     padding: 20px; 
     border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1); 
     width: 100%;
     height: 100%;
+    transition: transform 0.3s ease;
 }
 
-.racat {
-    display: flex;
-    width: 120px;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -85px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px dotted grey;
-    margin-top: 80px;
-    margin-bottom: 50px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+.LeftDiv:hover {
+    /* transform: translateY(-5px); Lift the element on hover */
+    /* box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 6px 12px rgba(0, 0, 0, 0.2); Enhanced shadow on hover */
 }
 
 .line_leftside {
     width: 100%;
-    background-color:ghostwhite;
+    background-color: #a9a9a9;
     height: 1px;
     margin: 20px 0;
 }
@@ -40,28 +30,37 @@
 .group_button_left {
     display: flex;
     flex-direction: column;
-    width: 250px; 
-    margin-top: 100px;
+    width: 300px; /* Adjust width if needed */
+    margin-top: 20px; /* Adjust margin as needed */
     justify-content: center;
     align-items: center;
+    text-align: center; /* Center text inside container */
+}
+
+.user_info_left {
+    font-size: 20px; /* Increase font size */
+    color: #101110; /* Change text color */
+    margin-bottom: 20px; /* Space below the label */
+    font-weight: bolder; /* Make the text bold */
 }
 
 .button_leftside {
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
+    padding: 12px; /* Increase padding for better usability */
+    margin: 10px 0; /* Add space between input fields */
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-size: 16px;
-    color: #333;
+    color: #0e0f10; /* Change text color */
     transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif; /* Professional font */
 }
 
 .button_leftside:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #040507;
+    box-shadow: 0 0 5px rgba(12, 13, 13, 0.5);
     background-color: #e9f5ff;
     outline: none;
 }
@@ -72,39 +71,63 @@
 }
 
 .button_leftside:hover {
-    border-color: #0056b3;
+    border-color: #0e0f0f;
     background-color: #f1f1f1;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .upload_button_left {
-    margin: 20px auto;
     display: block; 
-    width: 150px;
+    width: 200px; /* Adjust width */
+    height: 60px; /* Adjust height */
     background-color: #FCFCFD;
     border-radius: 8px;
-    border: 2px solid grey; 
-    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    border: 2px solid #141414; 
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 8px 16px -3px, #D6D6E7 0 -3px 0 inset;
     color: #36395A;
     cursor: pointer;
     font-family: "JetBrains Mono", monospace;
-    height: 48px;
     text-align: center;
     text-decoration: none;
-    transition: box-shadow .15s, transform .15s;
-    font-size: 18px;
+    transition: box-shadow .15s, transform .15s, background-color .15s;
+    font-size: 20px; /* Adjust font size */
+    margin: 0 auto; /* Center horizontally */
 }
 
 .upload_button_left:focus {
-    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 8px 16px -3px, #D6D6E7 0 -3px 0 inset;
 }
 
 .upload_button_left:hover {
-    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 6px 12px, rgba(45, 35, 66, 0.3) 0 8px 16px -3px, #D6D6E7 0 -3px 0 inset;
     transform: translateY(-2px);
 }
 
 .upload_button_left:active {
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
+}
+.btn {
+    background-color: #6c757d; /* Gray background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Padding to make the button more clickable */
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Hover effect */
+.btn:hover {
+    background-color: #5a6268; /* Darker background on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+}
+
+/* Active/click effect */
+.btn:active {
+    background-color: #545b62; /* Even darker on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Less shadow when clicked */
+    transform: translateY(1px); /* Slight "pressed" effect */
 }
