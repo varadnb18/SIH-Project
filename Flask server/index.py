@@ -31,23 +31,30 @@ generation_config = {
     "max_output_tokens": 8192,
     "response_mime_type": "text/plain",
 }
+
+# Initialize the Generative Model globally
 AImodel = genai.GenerativeModel(
     model_name="gemini-1.5-pro",
     generation_config=generation_config,
     system_instruction=(
-        "You are a AI Crop(Tomato) Expert. Whenever user sends you the image of tomato leaf with disease and the predicted disease from the ML model you will rectify the result and just generate proper output for it including detailed Symptoms, preventive measures, Treatment and the links to the products such as fertilizer, pesticides, etc.\nThe predicted output array consist of:\nclass_names = [\n    'Tomato___Bacterial_spot',\n    'Tomato___Early_blight',\n    'Tomato___Late_blight',\n    'Tomato___Leaf_Mold',\n    'Tomato___Septoria_leaf_spot',\n    'Tomato___Spider_mites Two-spotted_spider_mite',\n    'Tomato___Target_Spot',\n    'Tomato___Tomato_Yellow_Leaf_Curl_Virus',\n    'Tomato___Tomato_mosaic_virus',\n    'Tomato___healthy'\n]\nDo not comment on the output of ML model.\n\nlinks: www.amazon.in, https://www.bighaat.com/, https://agribegri.com/"
+        "You are a AI Crop(Tomato) Expert. Whenever user sends you the image of tomato leaf with disease, predicted disease from the ML model along with the soil parameters such as Ph,sulfur,nitrogen,potassium content in the soil in (mg/kg) you will rectify the result and just generate proper output for it including detailed Symptoms, preventive measures, Treatment and the links to the products such as fertilizer, pesticides, etc.\nThe predicted output array consist of:\nclass_names = [\n    'Tomato___Bacterial_spot',\n    'Tomato___Early_blight',\n    'Tomato___Late_blight',\n    'Tomato___Leaf_Mold',\n    'Tomato___Septoria_leaf_spot',\n    'Tomato___Spider_mites Two-spotted_spider_mite',\n    'Tomato___Target_Spot',\n    'Tomato___Tomato_Yellow_Leaf_Curl_Virus',\n    'Tomato___Tomato_mosaic_virus',\n    'Tomato___healthy'\n]\nDo not comment on the output of ML model.\n\nlinks: www.amazon.in, https://www.bighaat.com/, https://agribegri.com/"
     )
 )
+
+# Global variable for chat session
+chat_session = None
 
 # Function to upload image to Gemini
 def upload_to_gemini(path):
     file = genai.upload_file(path, mime_type="image/jpeg")
     return file
 
-# Initialize the chatbot session asynchronously
+# Function to initialize the chatbot session asynchronously
 async def start_chat():
+    global chat_session
     try:
-        AImodel.start_chat(history=[])
+        chat_session = AImodel.start_chat(history=[])
+        print("Chat session initialized")
     except Exception as e:
         print(f"Error initializing chat session: {e}")
 
@@ -61,7 +68,14 @@ def predict():
         return jsonify({'error': 'No file provided'}), 400
     
     file = request.files['file']
-    
+    ph = request.form.get('ph')
+    sulfur = request.form.get('sulfur')
+    nitrogen = request.form.get('nitrogen')
+    potassium = request.form.get('potassium')
+
+    # Use these variables in your prediction logic
+    print(f"PH: {ph}, Sulfur: {sulfur}, Nitrogen: {nitrogen}, Potassium: {potassium}")
+
     if file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
     
@@ -87,8 +101,20 @@ def predict():
             # Upload image to Gemini and send message
             uploaded_file = upload_to_gemini(image_path)
             chat_session = AImodel.start_chat(history=[{"role": "user", "parts": [uploaded_file]}])
-            response = chat_session.send_message(model_prediction)
-            print("AI response=> ",response.text)
+            
+            # Create a formatted message string
+            message = (
+                f"Predicted Disease: {model_prediction}\n"
+                f"PH: {ph}\n"
+                f"Sulfur: {sulfur}\n"
+                f"Nitrogen: {nitrogen}\n"
+                f"Potassium: {potassium}"
+            )
+
+            # Send the message
+            response = chat_session.send_message(message)
+            print("AI response =>", response.text)
+
             # Remove the temporary image file
             os.remove(image_path)
 
@@ -104,8 +130,21 @@ def predict():
     else:
         return jsonify({'error': 'Invalid file type, only images are allowed'}), 400
 
+@app.route('/chat', methods=['POST'])
+def chat():
+    text_data = request.form.get('text')
+    print("Received text =>", text_data)
+    try:
+        response = chat_session.send_message(text_data)
+        return jsonify({'ai_response': response.text})
+    except Exception as e:
+        return jsonify({'error': f'Error sending message: {e}'}), 500
+    
+
 if __name__ == '__main__':
     if not os.path.exists('uploads'):
         os.makedirs('uploads')
-    app.run(debug=True)
+    
+    # Start the Flask app and initialize the chat session
     asyncio.run(start_chat())
+    app.run(debug=True)
