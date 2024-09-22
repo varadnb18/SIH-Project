@@ -2,8 +2,9 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; 
+  overflow: hidden;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -15,13 +16,25 @@ body {
 
 .App {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
   margin: 0;
   background-image: url('https://static4.depositphotos.com/1014905/360/i/450/depositphotos_3602094-stock-photo-corn-field-in-sunset-maize.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: fixed center;
   background-repeat: no-repeat;
+}
+
+.NavbarContainer {
+  flex: 0 0 50px; /* Adjust height of the navbar */
+  background-color: rgba(255, 255, 255, 0.8); /* Example: transparent white background */
+}
+
+.MainContent {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 50px); /* Adjust for navbar height */
 }
 
 .LeftDiv, .RightDiv {
@@ -33,5 +46,44 @@ body {
   padding: 1rem;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+}
+
+/* Animation for LeftDiv */
+.LeftDiv {
+  animation: slideInTop 1s ease-out forwards; /* Adjust the duration and easing as needed */
+}
+
+/* RightDiv styling */
+.RightDiv {
+  animation: slideInRight 1s ease-out forwards; /* Add animation for RightDiv */
+}
+
+/* Divider styling */
+.Divider {
+  width: 2px; /* Change to vertical */
+  background-color: rgba(255, 255, 255, 0.5); /* Optional styling */
+}
+
+/* animations.css */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

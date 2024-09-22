@@ -1,13 +1,10 @@
 .RightDiv {
     display: flex;
     flex-direction: column;
-    height: 100%; 
-    /* background-image: url('https://www.shutterstock.com/image-photo/ai-machine-learning-hands-robot-600nw-2261069627.jpg'); */
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat; 
-}
-
+    height: 100%;
+    animation: slideInRight 2.5s ease-out forwards; 
+  }
+  
 
 .innerDiv {
     background-color: rgba(255, 255, 255, 0.8); 
@@ -63,7 +60,7 @@ input:focus {
 }
 
 .chat {
-    background-color: rgba(255, 255, 255, 0.5); /* More transparent */
+    background-color: rgba(103, 97, 97, 0.5); /* More transparent */
     padding: 1rem; 
     margin: 0.5rem 0;
     border-radius: 8px; 
@@ -113,5 +110,5 @@ input:focus {
 .size-7 {
     width: 24px;
     height: 24px;
-    fill: currentColor;
+    fill: currentColor;
 }

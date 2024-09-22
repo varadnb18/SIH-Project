@@ -1,0 +1,46 @@
+/* Header.css */
+.header {
+    position: fixed;       /* Fixes the header at the top of the page */
+    top: 0;                /* Aligns the header at the very top */
+    left: 0;               /* Aligns the header at the left edge */
+    width: 100%;           /* Ensures the header spans the entire width of the viewport */
+    background-color: #333; /* Background color for the navbar */
+    color: white;          /* Text color */
+    padding: 1rem;         /* Padding for inner spacing */
+    display: flex;         /* Align items horizontally */
+    justify-content: space-between; /* Space between logo and nav items */
+    align-items: center;   /* Vertically centers the items */
+    z-index: 1000;         /* Keeps the header above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better separation */
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar ul {
+    list-style: none; /* Removes bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbar ul li {
+    margin-left: 1.5rem;
+  }
+  
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  
+  .navbar ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  body {
+    padding-top: 60px; /* Offsets the body content so it doesn't hide under the fixed navbar */
+  }
+  

@@ -1,0 +1,76 @@
+/* General Navbar styles */
+.navbar {
+    position: fixed; /* Keep the navbar fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make it span the full width of the page */
+    background-color: #E0F7FA;  /* White-blueish background color */
+    padding: 16px 32px; /* Add horizontal padding for better spacing */
+    z-index: 10; /* Ensure it stays above the other elements */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  /* Container to align content */
+  .container {
+    display: flex;
+    justify-content: space-between; /* Space items evenly (logo on one side, links on the other) */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;  /* Center content horizontally */
+    width: 100%;
+  }
+  
+  /* Logo styling */
+  .logo {
+    color: black; /* Change the logo text color to black for better contrast */
+    font-size: 24px;  /* Equivalent to text-2xl */
+    font-weight: bold;  /* Equivalent to font-bold */
+    text-transform: uppercase; /* Make the logo text uppercase */
+    letter-spacing: 2px; /* Add some letter spacing for style */
+  }
+  
+  /* Navigation links container */
+  .nav-links {
+    display: flex;
+    gap: 24px;  /* Increase the space between navigation items */
+    list-style: none; /* Remove bullets for list items */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Individual link styles */
+  .nav-link {
+    color: black; /* Change link text color to black for contrast */
+    text-decoration: none;
+    font-size: 16px; /* Equivalent to text-base */
+    font-weight: 500; /* Semi-bold for better readability */
+    transition: color 0.3s ease;  /* Smooth hover transition */
+    padding: 8px 12px; /* Add some padding to each link for better clickability */
+  }
+  
+  /* Hover effect for links */
+  .nav-link:hover {
+    color: #006064;  /* Darker blue color on hover */
+    background-color: rgba(0, 0, 0, 0.1); /* Slight background change on hover */
+    border-radius: 4px; /* Rounded corners for hover effect */
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 12px 20px; /* Reduce padding for smaller screens */
+    }
+  
+    .logo {
+      font-size: 20px; /* Slightly smaller logo on mobile */
+    }
+  
+    .nav-links {
+      gap: 12px; /* Reduce spacing between links on smaller screens */
+    }
+  
+    .nav-link {
+      font-size: 14px; /* Slightly smaller text for mobile */
+    }
+  }
+  
