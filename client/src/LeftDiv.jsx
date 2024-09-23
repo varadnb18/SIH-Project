@@ -5,6 +5,7 @@ import axios from 'axios';
 
 function LeftDiv() {
     const { data, setData } = useContext(MyContext);
+    const { loading, setLoading } = useContext(MyContext);
     const [selectedImage, setSelectedImage] = useState(null);
     const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
     const [prediction, setPrediction] = useState('');
@@ -26,6 +27,7 @@ function LeftDiv() {
     };
     
     async function handleSend() {
+        setLoading(true);
         const formData = new FormData();
     
         // Append the image file to formData
@@ -47,7 +49,7 @@ function LeftDiv() {
             setPrediction(response.data.prediction);
             setData(response.data.ai_response); // Update context state
             console.log("data=>", response.data.ai_response); // Log the response
-    
+            setLoading(false);
         } catch (error) {
             console.error("Error in prediction:", error.response ? error.response.data : error.message);
             alert("There was an error predicting the disease.");

@@ -1,11 +1,13 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState, CSSProperties } from "react";
 import "./RightDiv.css";
 import { MyContext } from "./MyContext";
 import ReactMarkdown from 'react-markdown';
 import axios from "axios";
+import { ClipLoader } from 'react-spinners';
 
 function RightDiv() {
     const {data}=useContext(MyContext);
+    const {loading,setLoading}=useContext(MyContext);
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState([]);
 
@@ -13,11 +15,13 @@ function RightDiv() {
         if(data!=''){
             setMessages(prevMessages=>[...prevMessages,{text:data,isBot:true}]);
         }
+        
     },[data]);
 
     const msgEnd = useRef(null);
 
     async function handleSend() {
+        // setLoading(true);
         const userText = input;
         if (userText.trim()) {
             setMessages(prevMessages => [...prevMessages, { text: userText, isBot: false }]);
@@ -33,8 +37,10 @@ function RightDiv() {
             });
             console.log("Response:",response.data);
             setMessages(prevMessages=>[...prevMessages,{text:response.data.ai_response,isBot:true}]);
+            // setLoading(false);
         }catch(error){
             console.error('Error making the request:',error.message);
+            // setLoading(false);
         }
     }
 
@@ -48,15 +54,28 @@ function RightDiv() {
         }
     }, [messages]);
     
+
     return (
         <div className="RightDiv">
             <div className="innerDiv">
+            {loading?(
+                <div className="loaderContainer">
+                        <ClipLoader 
+                            size={50} color={"#123abc"} 
+                            loading={loading} 
+                            aria-label="Loading Spinner"
+                            data-testid="loader" 
+                        />
+                </div>
+            ):(<>
                 {messages.map((message, i) => (
                     <div key={i} className={message.isBot ? "chat bot" : "chat"}>
                         <ReactMarkdown>{message.text}</ReactMarkdown>
                     </div>
                 ))}
-                <div ref={msgEnd}></div>
+            </> 
+            )} 
+            <div ref={msgEnd}></div>
             </div>
             <div className="bottomBar">
                 <input
