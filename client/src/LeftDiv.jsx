@@ -98,4 +98,4 @@ function LeftDiv() {
     );
 }
 
-export default LeftDiv;
+export default LeftDiv;
